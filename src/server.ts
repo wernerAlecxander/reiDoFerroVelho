@@ -22,9 +22,28 @@ server.get('/ping', (req, res) => {
     res.json({pong: true});
 });
 
-server.get('/prod', (req, res) => {
-    res.json({produtos: {id: 1, nome: 'produto 1', preco: 100.00}});
+server.get('/:prod/:id', (req, res) => {
+    const {id, prod} = req.params; 
+    //res.json({id: req.params.id});
+    //res.get(req.params.id);
+    console.log(req.params);
+    //simulando um produto vindo do banco de dados;
+    res.json({produtos: {id: id, nome: prod.toUpperCase(), preco: 100.00}});
 });
+
+server.get('/flight/:from/:to', (req, res) => {
+    const {from, to} = req.params;
+    res.json({
+        flight: {
+            from: from.toUpperCase(), 
+            to:to.toUpperCase(), 
+            price: 200
+        }
+    });
+    console.log(req.params);
+});
+
+//route server_information
 
 server.get('/status', (req, res) => {
     res.json({LINK, PORT, status, online});
