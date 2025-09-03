@@ -12,7 +12,7 @@
   },
   "license": "ISC",
   "author": "werner alecxander",
-  "type": "commonjs",
+  "type": "module",
   "main": "server.ts",
   "scripts": {
     "start": "node --env-file=.env --import=tsx --watch ./src/server.ts",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
-    "@types/node": "^20.19.11",
+    "@types/node": "^20.19.12",
     "tsx": "^4.20.5"
   },
   "dependencies": {

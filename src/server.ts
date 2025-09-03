@@ -2,11 +2,17 @@
 import express from 'express';
 import helmet from 'helmet';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import router from './routes/index.js';
 //variables
-const PORT: number = 3000 as number;
-const LINK: string = 'http://localhost' as string;
-let status: number = 200 as number;
-let online: boolean = true;
+const PORT = process.env.PORT || 3000;
+const LINK: string = process.env.LINK || 'http://localhost' as string;
+let STATUS = process.env.STATUS || 200;
+let ONLINE = process.env.ONLINE || true;
+//directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname: string = dirname(__filename);
 const server = express();
 //library for protection of attack, pentest and hacking
 server.use(helmet());
@@ -16,38 +22,8 @@ server.use(express.json());
 server.use(express.urlencoded({extended: true}));
 //tornando a pasta public pública para acesso via LOCALHOST
 server.use(express.static(path.join(__dirname, '../public')));
-//create routes
-server.get('/ping', (req, res) => {
-    //res.get('pong');
-    res.json({pong: true});
-});
-
-server.get('/:prod/:id', (req, res) => {
-    const {id, prod} = req.params; 
-    //res.json({id: req.params.id});
-    //res.get(req.params.id);
-    console.log(req.params);
-    //simulando um produto vindo do banco de dados;
-    res.json({produtos: {id: id, nome: prod.toUpperCase(), preco: 100.00}});
-});
-
-server.get('/flight/:from/:to', (req, res) => {
-    const {from, to} = req.params;
-    res.json({
-        flight: {
-            from: from.toUpperCase(), 
-            to:to.toUpperCase(), 
-            price: 200
-        }
-    });
-    console.log(req.params);
-});
-
-//route server_information
-
-server.get('/status', (req, res) => {
-    res.json({LINK, PORT, status, online});
-});
+//using routes(index.ts)
+server.use('/', router);
 //start server_information
 server.listen(PORT, () => {
     console.log(`servidor funcionando no link ${LINK}:${PORT}`);
