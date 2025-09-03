@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Functions</h1>
+<h2>setTimeout() with a Callback</h2>
+
+<p>Wait 0,5 seconds (500 milliseconds) for this page to change.</p>
+
+<h1 id="demo"></h1>
+
+<script>
+function myFunction(value) {
+    setTimeout(() => {document.getElementById("demo").innerHTML = value}, 500);
+}
+
+let promisePage = new Promise(function(resolvePage, rejectPage){
+    resolvePage("Right");
+    rejectPage("Don't right");
+});
+        
+promisePage.then(
+    function(value){
+        myFunction(value);
+    },
+    function(error){
+        myFunction(error);
+    }
+)
+//OUTRO MODO
+/*
+onst myPromise = new Promise(function(myResolve, myReject) {
+  setTimeout(function(){ myResolve("I love You !!"); }, 3000);
+});
+
+myPromise.then(function(value) {
+  document.getElementById("demo").innerHTML = value;
+});
+*/
+</script>
+
+</body>
+</html>

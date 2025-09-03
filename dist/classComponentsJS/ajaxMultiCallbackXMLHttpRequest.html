@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo">
+<h2>The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc('ajax_info.txt', myFunction1)">loadDocFunctionOne</button><br><br>
+<button type="button" onclick="loadDoc('mycar.html', myFunction2)">loadDocFunctionTwo</button>
+</div>
+
+<script>
+
+function loadDoc(url, cFunction) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {cFunction(this);}
+  xhttp.open("GET", url);
+  xhttp.send();
+}
+document.getElementById("demo")
+function myFunction1(xhttp) {
+  if (xhttp.status == 200) {
+    document.getElementById('demo').innerHTML = xhttp.responseText;
+  } else {
+    document.getElementById('demo').innerHTML = "nada";
+  }
+}
+function myFunction2(xhttp) {
+  if (xhttp.status == 200) {
+    document.getElementById('demo').innerHTML = xhttp.responseText;
+  } else {
+    document.getElementById('demo').innerHTML = "nada";
+  }
+} 
+
+//loadDoc("ajax_info.txt", myFunction1);
+//loadDoc("mycar.html", myFunction2);
+</script>
+
+</body>
+</html>

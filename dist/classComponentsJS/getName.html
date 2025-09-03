@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Promise Object</h1>
+<h2>The then() Method</h2>
+
+<p id="demo2">HERE</p>
+
+<form name="fName" id="fName">
+    <label id="lName">NAME:</label><br>
+    <input id="iName" placeholder="type your name here" type="text" onchange="changeTextUpper()"><br>
+    <button type="submit" onclick="functionTest">click HERE</button>
+</form>
+
+<script>
+
+changeTextUpper(){
+    let x = document.getElementById("iName");
+    x.value = x.value.toUpperCase();
+}
+
+function myDisplayer2(some) {
+  document.getElementById("demo2").innerHTML = some;
+}
+
+let myProm = new Promise(function(myResol, myRejec) {
+    let value = document.getElementById("iName").value;
+    if(value != undefined || value == ""){
+        myResol("text typed input with sucess");
+    } else {
+        myRejec("input your name right");
+    }
+});
+
+myProm.then(
+    function(value) {myDisplayer2(value);},
+    function(error) {myDisplayer2(error);}
+);
+
+
+</script>
+
+</body>
+</html>
