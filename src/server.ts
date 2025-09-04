@@ -15,8 +15,7 @@ import router from './routes/index.js';
 //variables
 const PORT = process.env.PORT || 3000;
 const LINK: string = process.env.LINK || 'http://localhost' as string;
-let STATUS = process.env.STATUS || 200;
-let ONLINE = process.env.ONLINE || true;
+
 
 //directory name
 const __filename = fileURLToPath(import.meta.url);
