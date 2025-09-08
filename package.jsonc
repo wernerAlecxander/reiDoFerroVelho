@@ -4,11 +4,11 @@
   "description": "\"project for junkyard\"",
   "homepage": "https://github.com/wernerAlecxander/reiDoFerroVelho#readme",
   "bugs": {
-    "url": "https://github.com/wernerAlecxander/reiDoFerroVelho/issues"
+    "url": "https://github.com/wernerAlecxander/reiDoFerroVelho/issues",
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wernerAlecxander/reiDoFerroVelho.git"
+    "url": "git+https://github.com/wernerAlecxander/reiDoFerroVelho.git",
   },
   "license": "ISC",
   "author": "werner alecxander",
@@ -18,15 +18,15 @@
     //"start": "node --env-file=.env --import=tsx --watch ./src/server.ts",
     "start": " node --env-file=.env dist/server.js",
     //"dev": "tsx watch ./src/server.ts",
-    "build": "tsc"
+    "build": "tsc",
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^20.19.12",
-    "tsx": "^4.20.5"
+    "tsx": "^4.20.5",
   },
   "dependencies": {
     "express": "^5.1.0",
-    "helmet": "^8.1.0"
-  }
+    "helmet": "^8.1.0",
+  },
 }

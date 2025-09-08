@@ -1,33 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<body>
+  <body>
+    <h1>JavaScript Functions</h1>
+    <h2>setInterval() with a Callback</h2>
 
-<h1>JavaScript Functions</h1>
-<h2>setInterval() with a Callback</h2>
+    <p>Using setInterval() to display the time every second (1000 milliseconds).</p>
 
-<p>Using setInterval() to display the time every second (1000 milliseconds).</p>
+    <h1 id="demo"></h1>
 
-<h1 id="demo"></h1>
+    <script>
+      setInterval(time, 500);
 
-<script>
-setInterval(time, 500);
-
-function time(){
-let d = new Date();
-const minString = d.getMinutes();
-const minInter = parseInt(minString, 10);
-    if((minInter > 1) && (minInter < 9)){
-       document.getElementById("demo").innerHTML =  `${d.getHours()}:0${d.getMinutes()}:${d.getSeconds()}`;
-    } else {
-        document.getElementById("demo").innerHTML = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
-    }
-}
-
-
-		
-
-
-</script>
-
-</body>
+      function time() {
+        let d = new Date();
+        const minString = d.getMinutes();
+        const minInter = parseInt(minString, 10);
+        if (minInter > 1 && minInter < 9) {
+          document.getElementById('demo').innerHTML =
+            `${d.getHours()}:0${d.getMinutes()}:${d.getSeconds()}`;
+        } else {
+          document.getElementById('demo').innerHTML =
+            `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+        }
+      }
+    </script>
+  </body>
 </html>

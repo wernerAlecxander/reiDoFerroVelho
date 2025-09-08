@@ -1,65 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<p id="status"></p><br>
-<style>
-table,th,td {
-  border : 1px solid black;
-  border-collapse: collapse;
-}
-th,td {
-  padding: 5px;
-}
-</style>
-<body>
-
-<h2>The XMLHttpRequest Object</h2>
-
-<button type="button" onclick="loadDoc()" style="margin:10px;">Get my CD collection</button>
-<br>
-<table id="demo"><th style="padding:35px;">Artist</th><th style="padding:35px;">Title</th></table>
-<button type="button" onclick="onLoad()" style="margin:10px;">XMLinformation</button>
-<pre id="XMLinforme">XMLinformation</pre>
-
-<script>
-
-function onLoad(){
-	const xhttp = new XMLHttpRequest();
-	xhttp.onload = function() {
-    	myFunc(this);
-   	}
-    	xhttp.open("GET", "cd_catalog.xml");
-		xhttp.send();
-}
-function myFunc(xml){
-	document.getElementById("XMLinforme").innerHTML =
-  xml.getAllResponseHeaders();
-}
-
-function loadDoc() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
-    if(xhttp.status == 200){
-    	myFunction(xhttp);
-  	} else {
-    	document.getElementById("status") = xhttp.statusText;
+  <p id="status"></p>
+  <br />
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
     }
-  }
-  xhttp.open("GET", "cd_catalog.xml");
-  xhttp.send();
-}
-function myFunction(XMLHttp) {
-  const x = XMLHttp.responseXML.getElementsByTagName("CD");
-  let table="<tr><th>Artist</th><th>Title</th></tr>";
-  for (let i = 0; i <x.length; i++) { 
-    table += "<tr><td>" +
-    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
-    "</td><td>" +
-    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
-    "</td></tr>";
-  }
-  document.getElementById("demo").innerHTML = table;
-}
-</script>
+    th,
+    td {
+      padding: 5px;
+    }
+  </style>
+  <body>
+    <h2>The XMLHttpRequest Object</h2>
 
-</body>
+    <button type="button" onclick="loadDoc()" style="margin: 10px">Get my CD collection</button>
+    <br />
+    <table id="demo">
+      <th style="padding: 35px">Artist</th>
+      <th style="padding: 35px">Title</th>
+    </table>
+    <button type="button" onclick="onLoad()" style="margin: 10px">XMLinformation</button>
+    <pre id="XMLinforme">XMLinformation</pre>
+
+    <script>
+
+      function onLoad(){
+      	const xhttp = new XMLHttpRequest();
+      	xhttp.onload = function() {
+          	myFunc(this);
+         	}
+          	xhttp.open("GET", "cd_catalog.xml");
+      		xhttp.send();
+      }
+      function myFunc(xml){
+      	document.getElementById("XMLinforme").innerHTML =
+        xml.getAllResponseHeaders();
+      }
+
+      function loadDoc() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+          if(xhttp.status == 200){
+          	myFunction(xhttp);
+        	} else {
+          	document.getElementById("status") = xhttp.statusText;
+          }
+        }
+        xhttp.open("GET", "cd_catalog.xml");
+        xhttp.send();
+      }
+      function myFunction(XMLHttp) {
+        const x = XMLHttp.responseXML.getElementsByTagName("CD");
+        let table="<tr><th>Artist</th><th>Title</th></tr>";
+        for (let i = 0; i <x.length; i++) {
+          table += "<tr><td>" +
+          x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+          "</td><td>" +
+          x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+          "</td></tr>";
+        }
+        document.getElementById("demo").innerHTML = table;
+      }
+    </script>
+  </body>
 </html>

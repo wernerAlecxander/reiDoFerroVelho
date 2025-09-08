@@ -11,11 +11,12 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 //importing route gereric (index.ts)
 import router from './routes/index.js';
+//importing errors handler
+import { errorHandler, notFoundRequest } from './routes/error_handler.js';
 
 //variables
 const PORT = process.env.PORT || 3000;
-const LINK: string = process.env.LINK || 'http://localhost' as string;
-
+const LINK: string = process.env.LINK || ('http://localhost' as string);
 
 //directory name
 const __filename = fileURLToPath(import.meta.url);
@@ -29,14 +30,18 @@ server.use(helmet());
 //initializing json response
 server.use(express.json());
 //initializing form response(GET, POST, PUT, DELETE)
-server.use(express.urlencoded({extended: true}));
+server.use(express.urlencoded({ extended: true }));
 //tornando a pasta public pública para acesso via LOCALHOST
 server.use(express.static(path.join(__dirname, '../public')));
 
 //ROUTE GENERIC
 //using rota generica(index.ts)
 server.use('/', router);
+//using error not found
+server.use(notFoundRequest);
+//internal error
+server.use(errorHandler);
 //start server_information
 server.listen(PORT, () => {
-    console.log(`servidor funcionando no link ${LINK}:${PORT}`);
+  console.log(`servidor funcionando no link ${LINK}:${PORT}`);
 });

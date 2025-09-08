@@ -16,14 +16,19 @@
   "main": "server.ts",
   "scripts": {
     "start": "node --env-file=.env --import=tsx --watch ./src/server.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.{ts,js,json,md}\"",
+    "write": "node --import=tsx --watch ./src/writeFile.ts",
+    "read": "node --import=tsx --watch ./src/readFile.ts",
+    "rwfile": "node --import=tsx --watch ./src/rwfile.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.34.0",
     "@types/express": "^5.0.3",
-    "@types/node": "^20.19.12",
+    "@types/node": "^20.19.13",
     "eslint": "^9.34.0",
     "globals": "^16.3.0",
+    "prettier": "3.6.2",
     "tsx": "^4.20.5",
     "typescript-eslint": "^8.42.0"
   },
